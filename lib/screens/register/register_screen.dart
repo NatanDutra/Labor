@@ -172,7 +172,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             _tipoUsuario = value;
                           });
                         }),
-                        const Text('Prestador de Serviço')
+                        const Text('Prestador de Serviço'),
                       ],),
                       AppTextFieldIcon(
                         label: 'Nome completo',

@@ -22,7 +22,7 @@ class Usuario {
   }
 
   String verificaTipoUsuario(bool tipoUsuario){
-    return tipoUsuario ? "contractor" : "serviceProvider";
+    return tipoUsuario ? "serviceProvider" : "contractor";
   }
 
   String get tipoUsuario => _tipoUsuario!;

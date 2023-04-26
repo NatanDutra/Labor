@@ -70,7 +70,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
           ),
         ],
       ),
-      drawer: Drawer(
+    drawer: Drawer(
     child: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
