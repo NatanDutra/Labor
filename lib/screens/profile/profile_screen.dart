@@ -152,32 +152,6 @@ class _ProfileState extends State<Profile> {
                         Navigator.pop(context);
                       },
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 85),
-                      width: 70,
-                      height: 39,
-                      decoration: const BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.all(Radius.circular(7))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            'Onco',
-                            style: TextStyle(
-                                color: whiteColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Padding(padding: EdgeInsets.only(left: 5, top: 5)),
-                    const Text(
-                      'genética',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
                   ],
                 ),
                 const Divider(
