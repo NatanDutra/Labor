@@ -9,8 +9,6 @@ import 'package:labor/screens/serviceProvider/widget/screen_accept_service.dart'
 class Rotas {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
 
-    final args = settings.arguments;
-
     switch (settings.name){
       case '/' :
         return MaterialPageRoute(builder: (_) => const LoginScreen());
@@ -20,8 +18,6 @@ class Rotas {
         return MaterialPageRoute(builder: (_) => const ServiceProviderScreen());
       case '/contractor' :
         return MaterialPageRoute(builder: (_) => const ContractorScreen());
-      case '/job' :
-        return MaterialPageRoute(builder: (_) => ScreenAcceptService(idRequisicao: args,));
       default: 
         return _erroRota();
     }

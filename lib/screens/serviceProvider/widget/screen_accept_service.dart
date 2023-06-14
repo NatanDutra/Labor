@@ -6,13 +6,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../model/Usuario.dart';
 import 'package:labor/utils/statusRequest.dart';
+import 'package:labor/utils/user_firebase.dart';
 
 import '../../../utils/colors.dart';
 
 
 class ScreenAcceptService extends StatefulWidget {
-  Object? idRequisicao;
+  String? idRequisicao;
   ScreenAcceptService({super.key, required this.idRequisicao});
 
   @override
@@ -25,6 +27,7 @@ class _ScreenAcceptServiceState extends State<ScreenAcceptService> {
   late Function _functionButton;
   final Completer<GoogleMapController> _controller = Completer();
   CameraPosition _posicaoCamera = CameraPosition(target: LatLng(-21.139067, -47.8193591),);
+  late Map<String, dynamic> _dadosRequisicao;
 
     _alterButtonMain(String texto, Color cor, Function funcao){
     setState(() {
@@ -78,11 +81,90 @@ class _ScreenAcceptServiceState extends State<ScreenAcceptService> {
     );
   }
 
+  _recoverRequest() async {
+    String? idRequest = widget.idRequisicao;
+
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    DocumentSnapshot documentSnapshot = await db.collection("requisicoes").doc(idRequest).get();
+
+    _dadosRequisicao = documentSnapshot.data as Map<String, dynamic>;
+    _addListenerRequest();
+  }
+
+  _addListenerRequest() async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    String idRequest = _dadosRequisicao['id'];
+    await db.collection("requisicoes").doc(idRequest).snapshots().listen((snapshot) {
+      Map<String, dynamic> dados = snapshot.data as Map<String, dynamic>;
+      String status = dados['status'];
+
+      switch(status){
+          case StatusRequest.AGUARDANDO:
+            _statusAguardando();
+            break;
+          case StatusRequest.A_CAMINHO:
+          break;
+          case StatusRequest.EM_ANDAMENTO:
+          _statusAndamento();
+          break;
+          case StatusRequest.FINALIZADO:
+
+          break;
+        }
+    });
+  }
+
+  _statusAguardando(){
+    _alterButtonMain(
+      "Cancelar", blueColor2, (){
+        _acceptWork();
+      });
+  }
+
+    _statusAndamento(){
+    _alterButtonMain(
+      "O trabalho está em andamento", grayColor, (){
+        _functionNull();
+      });
+  }
+
+  _functionNull() {
+    return null;
+  }
+
+  _acceptWork() async {
+
+    Usuario serviceProvider = await UserFirebase.getDataUserLogged();
+
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    String idRequest = _dadosRequisicao as String;
+
+    db.collection('requisicoes').doc(idRequest).update({
+      "provider" : serviceProvider.toMap(),
+      "status" : StatusRequest.EM_ANDAMENTO
+    }).then((_){
+      String idContractor = _dadosRequisicao['contractor']['idUsuario'];
+      db.collection('requisicao_ativa').doc(idContractor).update({
+        "status" : StatusRequest.EM_ANDAMENTO
+      });
+    });
+
+    String idServiceProvider = serviceProvider.idUsuario;
+      db.collection('requisicao_ativa_service_provider').doc(idServiceProvider).set({
+        "id_requisicao" : idRequest,
+        "id_usuario" : idServiceProvider,
+        "status" : StatusRequest.EM_ANDAMENTO
+      });
+  }
+  
+
   @override
   void initState() {
     super.initState();
     _listenerLocation();
     _lastLocation();
+    _recoverRequest();
+    _dadosRequisicao;
   }
   @override
   Widget build(BuildContext context) {

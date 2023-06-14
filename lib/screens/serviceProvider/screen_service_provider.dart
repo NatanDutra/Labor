@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:labor/screens/serviceProvider/widget/screen_accept_service.dart';
 import 'package:labor/utils/statusRequest.dart';
 
 import '../../utils/colors.dart';
@@ -201,7 +202,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                       title: Text(nomeContractor),
                       subtitle: Text("Endereço: $rua, $numero"),
                       onTap: (){
-                        Navigator.pushNamed(context, '/job', arguments: idRequisicao);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenAcceptService(idRequisicao: idRequisicao,)));
                       },
                     );
                   },

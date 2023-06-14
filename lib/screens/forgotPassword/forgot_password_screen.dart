@@ -1,7 +1,7 @@
 // flutter
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 // utils
 import '../../utils/colors.dart';
 import '../../utils/size_config.dart';
@@ -56,6 +56,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           _isLoading = false;
         });
         LoadSpinner().hide();
+
+        FirebaseAuth auth = FirebaseAuth.instance;
+
+        auth.sendPasswordResetEmail(email: _emailController.text);
 
         await dialogBoxImageApp(
           context: context,
