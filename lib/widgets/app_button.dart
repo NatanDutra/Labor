@@ -38,7 +38,7 @@ class AppButton extends StatelessWidget {
       height: height ?? scaleHeight * 50,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: color ?? primaryColor,
+          backgroundColor: color ?? blueColor2,
           side: BorderSide(
             width: border == true ? scaleHeight * 2.5 : 0,
             color: border == true ? primaryColor : transparent,

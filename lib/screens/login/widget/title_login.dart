@@ -31,7 +31,7 @@ class TitleLogin extends StatelessWidget {
             fontSize: scaleHeight * 24,
             fontWeight: FontWeight.w600,
             letterSpacing: scaleHeight * 0.65,
-            color: primaryColor,
+            color: blueColor2,
           ),
         ),
         sh(16),

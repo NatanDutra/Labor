@@ -76,10 +76,11 @@ class _AuthWidgetState extends State<AuthWidget> with TickerProviderStateMixin {
             fit: BoxFit.cover,
           ),
         ),
+
         child: FadeTransition(
           opacity: _controller,
           child: Image.asset(
-            'assets/images/Labor.jpg',
+            'assets/images/logoredonda.png',
           ),
         ),
       ),

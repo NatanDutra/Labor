@@ -49,14 +49,14 @@ class _ProfileState extends State<Profile> {
             Padding(padding: EdgeInsets.only(top: 20, left: 110)),
             CircleAvatar(
               radius: 40,
-              backgroundImage: AssetImage('assets/images/mariana.png'),
+              backgroundImage: AssetImage('assets/images/natanfoto.jpg'),
             ),
           ]),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Mariana Borges',
+                'Natan Dutra',
                 style: TextStyle(
                     fontSize: 16,
                     color: grayColor,
@@ -64,7 +64,7 @@ class _ProfileState extends State<Profile> {
                     fontFamily: 'Epilogue'),
               ),
               Text(
-                'mariana_borges@gmail.com',
+                'natanpsnplus@gmail.com',
                 style: TextStyle(
                     fontSize: 14,
                     color: grayColor,
@@ -182,7 +182,7 @@ class _ProfileState extends State<Profile> {
                       children: const [
                         CircleAvatar(
                           backgroundImage:
-                              AssetImage('assets/images/mariana.png'),
+                              AssetImage('assets/images/natanfoto.jpg'),
                           radius: 60,
                         ),
                       ],
@@ -191,7 +191,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: scaleWidth * 10),
                     child: Column(children: [
-                      const Text('Mariana Borges dos Santos',
+                      const Text('Natan Laci Dutra Araujo',
                           style: TextStyle(
                               color: blackColor,
                               fontSize: 18,
@@ -199,7 +199,7 @@ class _ProfileState extends State<Profile> {
                       Padding(
                           padding:
                               EdgeInsets.symmetric(vertical: scaleHeight * 3)),
-                      const Text('marina.borges@gmail.com',
+                      const Text('natanpsnplus@gmail.com',
                           style: TextStyle(
                               color: blackColor,
                               fontSize: 16,

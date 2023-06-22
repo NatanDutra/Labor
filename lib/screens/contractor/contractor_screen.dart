@@ -15,6 +15,7 @@ import '../../model/Usuario.dart';
 import '../../model/service.dart';
 import '../../utils/statusRequest.dart';
 import '../../widgets/app_dialog.dart';
+import '../chat/chat_screen.dart';
 import '../profile/profile_screen.dart';
 
 class ContractorScreen extends StatefulWidget {
@@ -251,14 +252,14 @@ class _ContractorScreenState extends State<ContractorScreen> {
             Padding(padding: EdgeInsets.only(top: 20, left: 110)),
             CircleAvatar(
               radius: 40,
-              backgroundImage: AssetImage('assets/images/mariana.png'),
+              backgroundImage: AssetImage('assets/images/natanfoto.jpg'),
             ),
           ]),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Mariana Borges',
+                'Natan Dutra',
                 style: TextStyle(
                     fontSize: 16,
                     color: grayColor,
@@ -266,7 +267,7 @@ class _ContractorScreenState extends State<ContractorScreen> {
                     fontFamily: 'Epilogue'),
               ),
               Text(
-                'mariana_borges@gmail.com',
+                'natanpsnplus@gmail.com',
                 style: TextStyle(
                     fontSize: 14,
                     color: grayColor,
@@ -284,12 +285,12 @@ class _ContractorScreenState extends State<ContractorScreen> {
         ListTile(
           leading: const Icon(
             Icons.account_circle_outlined,
-            color: primaryColor,
+            color: blueColor2,
           ),
           title: const Text(
             'Meu Perfil',
             style: TextStyle(
-                color: grayColor,
+                color: blackColor,
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
                 fontFamily: 'Epilogue'),
@@ -305,14 +306,33 @@ class _ContractorScreenState extends State<ContractorScreen> {
         ListTile(
           leading: const Icon(
             Icons.settings,
-            color: primaryColor,
+            color: blueColor2,
           ),
           title: const Text(
             'Configurações',
             style: TextStyle(
-                color: grayColor, fontWeight: FontWeight.w400, fontSize: 15),
+                color: blackColor, fontWeight: FontWeight.w400, fontSize: 15),
           ),
           onTap: () {},
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.chat,
+            color: blueColor2,
+          ),
+          title: const Text(
+            'Chat',
+            style: TextStyle(
+                color: blackColor, fontWeight: FontWeight.w400, fontSize: 15),
+          ),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ChatScreen(),
+              ),
+            );
+            
+          },
         ),
         const Divider(
           color: blackColor,
@@ -320,12 +340,12 @@ class _ContractorScreenState extends State<ContractorScreen> {
         ListTile(
           leading: const Icon(
             Icons.cancel_outlined,
-            color: primaryColor,
+            color: blueColor2,
           ),
           title: const Text(
             'Sair',
             style: TextStyle(
-                color: grayColor, fontWeight: FontWeight.w400, fontSize: 15),
+                color: blackColor, fontWeight: FontWeight.w400, fontSize: 15),
           ),
           onTap: () async {
             dialogBoxLogoutApp(
